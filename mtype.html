@@ -1,48 +1,70 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mtype</title>
-</head>
-<body>
-  <div>
-    <h1 class="texa">PART ONE</h1>
-    <h1 class="texa2">PART TW0</h1>
-  </div>
-  <Script>
-    const x = document.querySelector('body');
-    const texa = document.querySelector('.texa');
-    const texa2 = document.querySelector('.texa2');
-    let myArr = [];
-    let stringform = "";
-    let expectedform = "bnmh";
-    let exArr = expectedform.split ("");
-    console.log (exArr);
+<html lang="en">
+  <head>
+    <meta charset-"UTF-8">
+    <meta name=" viewport" content="width=device-width, initial -scale=1.e">
+    <title>Mtype</title>
+  </head>
+  <body>
+    <h3 class="heading">Welcome To Mekelle University</h3>
+    <p class="texa">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>
+    <p class="printer"></p>
     
-    x.addEventListener('keydown', event => {
-      console.log(event);
-      if(event.key != 'Shift' && event.key != 'Control'){
-        myArr. push (event.key) ;
-        exArr.splice (0, 1);
-        // console. log (myArr);
-        //arrEnd = myArr.length - 1;
-        //if(myArr.length > 0) stringform += (`<span id='${arrEnd}'>${myArr[arrEnd]}</span>`);
-        stringform = "" ;
-        myArr.forEach( (elem, ind) => {
-          stringform += (`<span id='${ind} '>${elem} </span>`);
-          //console. log("Doing: " + stringform) ;
-        });
-        expectedform = "";
-        exArr.forEach( (elem, ind) => {
-          expectedform += (`<span id-'${ind + 20}'>${elem}</span>`);
-          //console. log ("Doing: " + expectedform);
-        });
-        console. log("Finally: " + stringform);
-        texa.innerHTML = stringform;
-        texa2.innerHTML = expectedform;
-      }
-    });
-  </script>
-</body>
+    
+    <script> 
+      const body = document.querySelector('body');
+      const heading = document.querySelector('.heading');
+      const texa = document.querySelector('.texa');
+      const printer = document.querySelector('.printer');
+      //const colors = ['red', 'black', 'yellow', 'blue', 'green', 'purple'];
+      let arr = texa.innerHTML.split("");
+      let index = 0;
+      let addedTexa = "";
+      let addedTexArr = [];
+      
+      body.addEventListener('keydown', event => {
+        if(event.key != 'Control' && event.key != 'Shift' && event.key != 'Backspace'){
+          if(event.key !== arr[index]){
+            if(arr[index] == " "){
+              addedTexa = `&nbsp;`;
+              printer.innerHTML += addedTexa;
+            } 
+            else{
+              addedTexa = arr[index];
+              printer.innerHTML += addedTexa;
+            }
+          } 
+          else{
+            printer.innerHTML += event.key;
+            addedTexa = event.key;
+          }
+          index++;
+          addedTexArr.push(addedTexa.length);
+        }
+        
+        if(event.key == 'Backspace'){
+          let addedTexlen = addedTexArr[addedTexArr.length-1];
+          printer.innerHTML = printer.innerHTML.slice(0, printer.innerHTML.length-addedTexlen);
+          index--;
+          addedTexArr.pop();
+        }
+        
+        /*
+        let ran1 = Math.round(Math.random()*5);
+        let ran2 = Math.round(Math.random()*5);
+        while (ran2 == ran1){
+          ran2 = Math.round(Math.random()*5);
+        }
+        heading.style.color = colors[ran1];
+        texa.style.color = colors[ran2];
+        console.log(ran1);
+        console.log(ran2);
+        console.log(arr);
+        */
+        console.log(event.key);
+      });
+      
+      
+    </script>
+  </body>
 </html>
