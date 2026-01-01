@@ -2,18 +2,28 @@
 <html lang="en">
   <head>
     <meta charset-"UTF-8">
-    <meta name=" viewport" content="width=device-width, initial -scale=1.e">
+    <meta name="viewport" content="width=device-width, initial -scale=1.e">
     <title>Mtype</title>
     <style>
       body{
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: monospace;
         color: white;
         background-color: black;
       }
-      .texa{
-        font-weight: 700;
+      .heading{
+        margin: 10px;
+      }
+      .mtype{
+        color: dodgerblue;
+      }
+      .main-printer{
+        font-size: 20px;
+        background-color: rgba(32, 32, 32, 1);
       }
       .printer{
+        font-family: monospace;
+      }
+      .back-text{
         font-family: monospace;
         color:gray;
       }
@@ -26,21 +36,29 @@
     </style>
   </head>
   <body>
-    <h3 class="heading">Welcome To Mekelle University</h3>
+    <h1 class="heading">welcome to <span class="mtype">ማType</span></h1>
     <p class="texa">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>
-    <p class="printer">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>
+    <p class="main-printer"><span class="printer"></span><span class="back-text"></span></p>
     
     
     <script> 
+      
       const body = document.querySelector('body');
       const heading = document.querySelector('.heading');
+      
       const texa = document.querySelector('.texa');
+      const mainPrinter = document.querySelector('.main-printer');
       const printer = document.querySelector('.printer');
       //const colors = ['red', 'black', 'yellow', 'blue', 'green', 'purple'];
+      
       let arr = texa.innerHTML.split("");
       let index = 0;
       let addedTexa = "";
       let addedTexArr = [];
+      let backArr = texa.innerHTML.split("");
+      let backbench = [];
+      
+      document.querySelector('.back-text').innerHTML = texa.innerHTML;
       
       body.addEventListener('keydown', event => {
         if(event.key != 'Control' && event.key != 'Shift' && event.key != 'Backspace'){
@@ -60,6 +78,11 @@
           }
           index++;
           addedTexArr.push(addedTexa.length);
+          
+          backbench.push(backArr[0]);
+          backArr.splice(0, 1);
+          let backText = backArr.join("");
+          mainPrinter.innerHTML = `<span class="printer">${printer.innerHTML}</span><span class="back-text">${backText}</span>`;
         }
         
         if(event.key == 'Backspace'){
@@ -67,6 +90,14 @@
           printer.innerHTML = printer.innerHTML.slice(0, printer.innerHTML.length-addedTexlen);
           index--;
           addedTexArr.pop();
+          
+          
+          let backElem = backbench.length-1;
+          backArr.unshift(backbench[backElem]);
+          console.log(backbench[backElem]);
+          backbench.pop();
+          let backText = backArr.join("");
+          mainPrinter.innerHTML = `<span class="printer">${printer.innerHTML}</span><span class="back-text">${backText}</span>`;
         }
         
         /*
