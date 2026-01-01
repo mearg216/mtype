@@ -40,7 +40,6 @@
 <!--<p class="texa">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>-->
     <p class="main-printer"><span class="printer"></span><span class="back-text"></span></p>
     
-    
     <script> 
       const messages = [
         "My code compiled on the first try. I immediately checked for a carbon monoxide leak. This success felt deeply unnatural and suspicious.",
@@ -74,7 +73,7 @@
       document.querySelector('.back-text').innerHTML = realTexa;
       
       body.addEventListener('keydown', event => {
-        if(event.key != 'Control' && event.key != 'Shift' && event.key != 'Backspace'){
+        if(event.key != 'Control' && event.key != 'Shift' && event.key != 'Backspace' && arr[index]){
           if(event.key !== arr[index]){
             if(arr[index] == " "){
               addedTexa = `<span class="sp-mistake">&nbsp;</span>`;
@@ -98,7 +97,7 @@
           mainPrinter.innerHTML = `<span class="printer">${printer.innerHTML}</span><span class="back-text">${backText}</span>`;
         }
         
-        if(event.key == 'Backspace'){
+        if(event.key == 'Backspace' && arr[index-1]){
           let addedTexlen = addedTexArr[addedTexArr.length-1];
           printer.innerHTML = printer.innerHTML.slice(0, printer.innerHTML.length-addedTexlen);
           index--;
