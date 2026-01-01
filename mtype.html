@@ -37,28 +37,41 @@
   </head>
   <body>
     <h1 class="heading">welcome to <span class="mtype">ማType</span></h1>
-    <p class="texa">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>
+<!--<p class="texa">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>-->
     <p class="main-printer"><span class="printer"></span><span class="back-text"></span></p>
     
     
     <script> 
+      const messages = [
+        "My code compiled on the first try. I immediately checked for a carbon monoxide leak. This success felt deeply unnatural and suspicious.",
+        "Why do programmers prefer dark mode? Because the light attracts bugs! We also hate glare while debugging our self-esteem.",
+        "I asked my rubber duck for help. It just floated there, silently judging my life choices. The debugging session was unproductive.",
+        "There are only two hard problems in computer science. Naming things, cache invalidation, and off-by-one errors. I just proved my point.",
+        "My function works perfectly, but I don't know why. Deleting it to start over would be professional suicide. I live in fear.",
+        "It works on my machine is the programmer's equivalent of a wizard did it. Both explanations end the conversation immediately.",
+        "I spent three hours optimizing a script that runs once a year. I have saved ten milliseconds of total compute time. Victory!",
+        "Google is my senior developer. Stack Overflow is my tech lead. Together, we form a competent and well-paid engineering team.",
+        "The meeting could have been an email. The email could have been a text. The text was just a crying emoji.",
+        "I finally understood recursion. I finally understood recursion. This joke only works if you finally understood recursion. Did you get it?"
+      ];
       
+      const realTexa = messages[Math.round(Math.random() * 9)];
       const body = document.querySelector('body');
       const heading = document.querySelector('.heading');
       
-      const texa = document.querySelector('.texa');
+      //const texa = document.querySelector('.texa');
       const mainPrinter = document.querySelector('.main-printer');
       const printer = document.querySelector('.printer');
       //const colors = ['red', 'black', 'yellow', 'blue', 'green', 'purple'];
       
-      let arr = texa.innerHTML.split("");
+      let arr = realTexa.split("");
       let index = 0;
       let addedTexa = "";
       let addedTexArr = [];
-      let backArr = texa.innerHTML.split("");
+      let backArr = realTexa.split("");
       let backbench = [];
       
-      document.querySelector('.back-text').innerHTML = texa.innerHTML;
+      document.querySelector('.back-text').innerHTML = realTexa;
       
       body.addEventListener('keydown', event => {
         if(event.key != 'Control' && event.key != 'Shift' && event.key != 'Backspace'){
