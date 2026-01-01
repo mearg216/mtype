@@ -4,11 +4,31 @@
     <meta charset-"UTF-8">
     <meta name=" viewport" content="width=device-width, initial -scale=1.e">
     <title>Mtype</title>
+    <style>
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        background-color: black;
+      }
+      .texa{
+        font-weight: 700;
+      }
+      .printer{
+        font-family: monospace;
+        color:gray;
+      }
+      .mistake{
+        color: red;
+      }
+      .sp-mistake{
+        background-color: red;
+      }
+    </style>
   </head>
   <body>
     <h3 class="heading">Welcome To Mekelle University</h3>
     <p class="texa">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>
-    <p class="printer"></p>
+    <p class="printer">Lorem ipsum dolor sit, amet consectetur adipisicing elit. obcaecati ea molestiae neque tenetur, on</p>
     
     
     <script> 
@@ -26,11 +46,11 @@
         if(event.key != 'Control' && event.key != 'Shift' && event.key != 'Backspace'){
           if(event.key !== arr[index]){
             if(arr[index] == " "){
-              addedTexa = `&nbsp;`;
+              addedTexa = `<span class="sp-mistake">&nbsp;</span>`;
               printer.innerHTML += addedTexa;
             } 
             else{
-              addedTexa = arr[index];
+              addedTexa = `<span class="mistake">${arr[index]}</span>`;
               printer.innerHTML += addedTexa;
             }
           } 
