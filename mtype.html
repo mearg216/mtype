@@ -17,6 +17,18 @@
       .mtype{
         color: dodgerblue;
       }
+      .container{
+        margin: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .timer{
+        align-self: flex-start;
+        color: orange;
+        font-size: 16px;
+        margin-bottom: 0;
+      }
       .main-printer{
         font-size: 20px;
         background-color: rgba(32, 32, 32, 1);
@@ -36,12 +48,34 @@
       .sp-mistake{
         background-color: rgba(255, 0, 0, 0.3);
       }
+      .retry-btn{
+        background-color: black;
+        border: 1px solid dodgerblue;
+	    padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 5px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+      }
+      .retry-btn:hover{
+        box-shadow: 0 0 10px 2px rgba(47, 137, 255, 0.4);
+      }
+      .retry-btn:active{
+        box-shadow: 0 0 10px 0px rgba(47, 137, 255, 0.4);
+      }
     </style>
   </head>
   <body>
     <h1 class="heading">welcome to <span class="mtype">ማType</span></h1>
-    <p class="main-printer"><span class="printer"></span><span class="back-text"></span></p>
-      
+    <div class="container">
+      <p class="timer">00:00</p>
+      <p class="main-printer"><span class="printer"></span><span class="back-text"></span></p>
+      <button class="retry-btn"><i class="fa fa-refresh" style="color: white;"></i></button>
+    </div>
+    
+    
     <script> 
       const messages = [
         "My code compiled on the first try. I immediately checked for a carbon monoxide leak. This success felt deeply unnatural and suspicious.",
