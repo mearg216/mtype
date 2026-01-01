@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mtype</title>
+</head>
+<body>
+  <div>
+    <h1 class="texa">PART ONE</h1>
+    <h1 class="texa2">PART TW0</h1>
+  </div>
+  <Script>
+    const x = document.querySelector('body');
+    const texa = document.querySelector('.texa');
+    const texa2 = document.querySelector('.texa2');
+    let myArr = [];
+    let stringform = "";
+    let expectedform = "bnmh";
+    let exArr = expectedform.split ("");
+    console.log (exArr);
+    
+    x.addEventListener('keydown', event => {
+      console.log(event);
+      if(event.key != 'Shift' && event.key != 'Control'){
+        myArr. push (event.key) ;
+        exArr.splice (0, 1);
+        // console. log (myArr);
+        //arrEnd = myArr.length - 1;
+        //if(myArr.length > 0) stringform += (`<span id='${arrEnd}'>${myArr[arrEnd]}</span>`);
+        stringform = "" ;
+        myArr.forEach( (elem, ind) => {
+          stringform += (`<span id='${ind} '>${elem} </span>`);
+          //console. log("Doing: " + stringform) ;
+        });
+        expectedform = "";
+        exArr.forEach( (elem, ind) => {
+          expectedform += (`<span id-'${ind + 20}'>${elem}</span>`);
+          //console. log ("Doing: " + expectedform);
+        });
+        console. log("Finally: " + stringform);
+        texa.innerHTML = stringform;
+        texa2.innerHTML = expectedform;
+      }
+    });
+  </script>
+</body>
+</html>
